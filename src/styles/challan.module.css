@@ -1,11 +1,4 @@
-/** {
-    box-sizing: border-box;
-}*/
-  /* general styling */
-/*body {
-    font-family: "Open Sans", sans-serif;
-}*/
-  /* Create four equal columns that floats next to each other */
+
 .column {
     display: flex;
     flex-direction: column;
