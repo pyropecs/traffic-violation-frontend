@@ -7,6 +7,12 @@ const [challan,setChallan] = useState("")
 // useEffect(()=>{
 const details = useChallan()
 const router = useRouter()
+const [isLoading,setLoading] = useState(false)
+if(isLoading){
+return <>
+	loading..
+</>
+}
 
 // },[])
 return(
@@ -20,13 +26,18 @@ return(
 		</Stack>
 		<form onSubmit={async (e)=>{
 			e.preventDefault()
-		const response = await fetch(`http://localhost:3001/get?challan_id=${challan}`,{
+			setLoading(true)
+		const response = await fetch(`https://traffic-backend-0p7s.onrender.com/get?challan_id=${challan}`,{
 
 		})
 		const {result} = await response.json()
+		setLoading(false)
+		if(!isLoading){
+
 		const res = result[0]
 		details.setChallan(res)
-		router.push(`/${challan}`)
+		router.push(`/challan`)	
+		}
 		}}>
 		<TextInput onChange={(e)=>setChallan(e.target.value)} px="10px" name="challan" py="10px" label="enter the challan number" placeholder="Enter challen number" 
 		styles={{

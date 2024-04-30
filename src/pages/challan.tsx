@@ -1,13 +1,17 @@
 import { useChallan } from "@/context";
 import {Button, Stack} from "@mantine/core"
 import "@/styles/challan.module.css"
+import { useRouter } from "next/router";
 const Challan =()=>{
-const details = useChallan()
-const challan= details.challan;
 
+const details = useChallan()
+if(!details.challan){
+    return "loading ..."
+}
+const challan= details.challan;
 return(
 <Stack justify="center" align="center" py="10px" px="20px" >
-	<div style={{width:"50%",border:"2px solid black",alignItems:"center",display:"flex",flexDirection:"column",padding:"10px" }} className="column">
+    <div style={{width:"50%",border:"2px solid black",alignItems:"center",display:"flex",flexDirection:"column",padding:"10px" }} className="column">
 
         <div className="d-flex justify-content-between">
             <strong>Invoice {challan.challan_id}</strong>
@@ -59,12 +63,14 @@ return(
         <br/>
         <hr/>
     </div>
-    		<Button m="10px" type="submit" color="green" radius="xl"  size="sm" >
-			Pay
-		</Button>	
+            <Button m="10px" type="submit" color="green" radius="xl"  size="sm" >
+            Pay
+        </Button>   
 </Stack>
     )
 
 }
+
+
 
 export default Challan;
