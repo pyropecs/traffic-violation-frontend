@@ -26,18 +26,18 @@ return(
 		</Stack>
 		<form onSubmit={async (e)=>{
 			e.preventDefault()
-			setLoading(true)
-		const response = await fetch(`https://traffic-backend-0p7s.onrender.com/get?challan_id=${challan}`,{
+			
+		// const response = await fetch(`https://traffic-backend-0p7s.onrender.com/get?challan_id=${challan}`,{
 
-		})
-		const {result} = await response.json()
-		setLoading(false)
-		if(!isLoading){
+		// })
+		// const {result} = await response.json()
+		router.push(`/${challan}`)
+		// if(!isLoading){
 
-		const res = result[0]
-		details.setChallan(res)
-		router.push(`/challan`)	
-		}
+		// const res = result[0]
+		
+			
+		// }
 		}}>
 		<TextInput onChange={(e)=>setChallan(e.target.value)} px="10px" name="challan" py="10px" label="enter the challan number" placeholder="Enter challen number" 
 		styles={{

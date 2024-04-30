@@ -2,13 +2,31 @@ import { useChallan } from "@/context";
 import {Button, Stack} from "@mantine/core"
 import "@/styles/challan.module.css"
 import { useRouter } from "next/router";
+import {useEffect,useState } from "react"
 const Challan =()=>{
+const [challan,setChallan] = useState<any>({})
+const router = useRouter()
+const [isLoading,setLoading] = useState(false)
+const query = router.query
+const ready = router.isReady;
+console.log(query.id)
 
-const details = useChallan()
-if(!details.challan){
-    return "loading ..."
+async function getResponse(){
+    setLoading(true)
+   const response = await fetch(`https://traffic-backend-0p7s.onrender.com/get?challan_id=${query.id}`)
+   const {result} = await response.json()
+   setLoading(false)
+const res = result[0]
+   setChallan(res) 
 }
-const challan= details.challan;
+useEffect( ()=>{
+    if(ready) getResponse()
+},[query.id])
+if(isLoading ){
+    return <>Loading ...</>
+}
+
+
 return(
 <Stack justify="center" align="center" py="10px" px="20px" >
     <div style={{width:"50%",border:"2px solid black",alignItems:"center",display:"flex",flexDirection:"column",padding:"10px" }} className="column">
@@ -45,7 +63,7 @@ return(
             </thead>
             <tbody>
                 <tr>
-                <td data-label="Account" colSpan={2}>{challan.violations[0]}</td>
+                <td data-label="Account" colSpan={2}>{challan.violations}</td>
                 <td data-label="Amount">{challan.fine_amount}</td>
                 </tr>
             </tbody>
