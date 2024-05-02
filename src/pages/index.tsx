@@ -43,10 +43,10 @@ navlinks.map((navlink,index)=><Anchor ff="Roboto" fz="18px" c="white"  key={inde
 
 </Group>
 
-<SimpleGrid py="20px" px="20px" cols={2}>
-<Text fz="32px">left</Text>
+<Stack w="100%"  py="20px" px="20px" justify="center"  align="center" >
+
   <GetChallanDetails/>
-</SimpleGrid>
+</Stack>
 
 
 </Stack>

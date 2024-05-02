@@ -16,7 +16,7 @@ return <>
 
 // },[])
 return(
-	<Stack w="100%" px="20px"  c="white"  h="40vh" gap="2px" style={{borderRadius:"24px",border:"2px solid black"}}>
+	<Stack w="50%" px="20px"  c="white"  h="40vh" gap="2px" style={{borderRadius:"24px",border:"2px solid black"}}>
 		<Stack py="10px" px="10px" justify="center" align="center" gap="5px" w="100%" c="black">
 
 			

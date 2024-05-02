@@ -40,7 +40,7 @@ return(
         <div className="d-flex justify-content-between">
             <div style={{display:"flex",gap:"20px",justifyContent:"space-between"}} >
                 <div>Due Date:</div>
-                <div>31/05/2023</div>
+                <div>31/05/2024</div>
             </div>
             <div style={{display:"flex",gap:"20px",justifyContent:"space-between"}}>
                 <span>Plate Number:</span>
